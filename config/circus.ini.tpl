@@ -12,4 +12,4 @@ host = 127.0.0.1
 port = 9999
 
 [env:webapp]
-PYTHONPATH = /code/app
+PYTHONPATH = /opt/app
