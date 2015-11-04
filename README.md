@@ -21,3 +21,13 @@ docker-nginx-circus-django with python3
 
     8000    #nginx -> circus -> django
     9999    #circus -> django
+
+## run to dev
+
+    mkvirtualenv yourEnv
+    workon yourEnv
+    pip install pip-tools
+    cd requirements
+    pip-sync common.txt dev.txt
+
+    invoke runserver
