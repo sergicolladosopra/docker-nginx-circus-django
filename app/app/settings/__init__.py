@@ -32,8 +32,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
-INSTALLED_APPS = (
+DJANGO_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,14 +42,18 @@ INSTALLED_APPS = (
 )
 
 VENDOR_APPS = (
+    'grappelli',
     'rest_framework',
 )
+
+
 
 PROJECT_APPS = (
     'users',
 )
 
-INSTALLED_APPS += VENDOR_APPS
+INSTALLED_APPS = VENDOR_APPS
+INSTALLED_APPS += DJANGO_APPS
 INSTALLED_APPS += PROJECT_APPS
 
 
