@@ -1,1 +1,3 @@
 pip-tools
+invoke
+django-debug-toolbar
