@@ -1,0 +1,15 @@
+db:
+    image: postgres
+    ports:
+    - "5432:5432"
+web:
+    build: .
+    command: /code/docker/start.sh
+    volumes:
+    - ./app:/opt/app
+    ports:
+    - "80:80"
+    - "8000:8000"
+    - "9999:9999"
+    links:
+    - db

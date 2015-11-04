@@ -20,3 +20,4 @@ six==1.10.0               # via chaussette, circus-web
 tomako==0.1.0             # via circus-web
 tornadIO2==0.0.3
 tornado==4.2.1            # via circus, circus-web, tomako, tornadio2
+psycopg2==2.6.1
