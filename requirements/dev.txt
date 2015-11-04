@@ -5,7 +5,10 @@
 #    pip-compile dev.in
 #
 click==5.1                # via pip-tools
+django-debug-toolbar==1.4
+django==1.8.5             # via django-debug-toolbar
 first==2.0.1              # via pip-tools
 invoke==0.11.1
 pip-tools==1.1.6
 six==1.10.0               # via pip-tools
+sqlparse==0.1.18          # via django-debug-toolbar
