@@ -46,7 +46,9 @@ VENDOR_APPS = (
     'rest_framework',
 )
 
-PROJECT_APPS = ()
+PROJECT_APPS = (
+    'users',
+)
 
 INSTALLED_APPS += VENDOR_APPS
 INSTALLED_APPS += PROJECT_APPS
