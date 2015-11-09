@@ -31,3 +31,20 @@ docker-nginx-circus-django with python3
     pip-sync common.txt dev.txt
 
     invoke runserver
+
+
+## authentication token
+
+Get token:
+
+    curl --data "username=anUsername&password=aPassword" -i -X POST http://127.0.0.1/api-token-auth/
+
+    {token' : '9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b' }
+
+
+add token to next  request:
+
+    Authorization: Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b
+
+    curl -i -H "Authorization:token 747b645c91dd181ab21baf496238bdf7ad629cd0" -X
+    GET http://127.0.0.1/users/
