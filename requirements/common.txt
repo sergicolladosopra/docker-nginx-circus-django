@@ -12,3 +12,4 @@ djangorestframework==3.3.1
 envtpl==0.4.1
 jinja2==2.8               # via envtpl
 markupsafe==0.23          # via jinja2
+django-dynamic-fixture==1.8.5
