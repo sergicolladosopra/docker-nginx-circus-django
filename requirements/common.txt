@@ -6,8 +6,9 @@
 #
 argparse==1.4.0           # via envtpl
 django-filter==0.11.0
+django-grappelli==2.7.2
 django==1.8.5
-djangorestframework==3.3.0
+djangorestframework==3.3.1
 envtpl==0.4.1
 jinja2==2.8               # via envtpl
 markupsafe==0.23          # via jinja2

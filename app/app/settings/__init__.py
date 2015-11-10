@@ -32,8 +32,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
-INSTALLED_APPS = (
+DJANGO_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,14 +42,19 @@ INSTALLED_APPS = (
 )
 
 VENDOR_APPS = (
+    'grappelli',
     'rest_framework',
+    'rest_framework.authtoken'
 )
+
+
 
 PROJECT_APPS = (
     'users',
 )
 
-INSTALLED_APPS += VENDOR_APPS
+INSTALLED_APPS = VENDOR_APPS
+INSTALLED_APPS += DJANGO_APPS
 INSTALLED_APPS += PROJECT_APPS
 
 
@@ -115,3 +119,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 STATIC_ROOT = '/code/static/'
 STATIC_URL = '/static/'
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
+    'PAGE_SIZE': 10,
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication'
+    )
+}

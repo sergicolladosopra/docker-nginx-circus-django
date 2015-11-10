@@ -11,8 +11,10 @@ WORKDIR /code
 
 ADD requirements/common.txt /code/
 ADD requirements/pre.txt /code/
+ADD requirements/dev.txt /code/
 RUN pip install -r common.txt
 RUN pip install -r pre.txt
+RUN pip install -r dev.txt
 
 ADD docker /code/docker
 
