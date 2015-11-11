@@ -1,22 +1,23 @@
 from django.test import TestCase
 from django.core.urlresolvers import reverse
 from rest_framework import status
-from rest_framework.test import APITestCase, force_authenticate, APIRequestFactory
-from rest_framework.authtoken import views
+from rest_framework.test import APITestCase, force_authenticate, APIRequestFactory, APIClient
+from rest_framework.authtoken.models import Token
 from django.contrib.auth.models import User
 from django_dynamic_fixture import G, get
 from django.contrib.auth.hashers import make_password
-from .views import UserViewSet
 import json, uuid
 
 class UserTests(APITestCase):
     user = None
+    token = None
     password = 'apassword'
 
     @classmethod
     def setUpClass(self):
         super(UserTests, self).setUpClass()
-        self.user = G(User, username=str(uuid.uuid1()), password=make_password(self.password))
+        self.user = G(User, username=str(uuid.uuid1()), password=make_password(self.password), is_staff=1)
+        self.token = Token.objects.get(user__username=self.user.username)
 
     def test_authentication_is_enabled(self):
         urls = ['/users/', '/groups/']
@@ -32,16 +33,13 @@ class UserTests(APITestCase):
         self.assertTrue('token' in response.data)
         self.assertIsNotNone(response.data['token'])
 
-    def test_get_all_users_forcing_authentication(self):
+
+    def test_get_all_users(self):
         url = '/users/'
+        self.client.credentials(HTTP_AUTHORIZATION='Token '+str(self.token))
+        response = self.client.get(url)
+        json_response = response.content.decode('ascii')
 
-        factory = APIRequestFactory()
-        view = UserViewSet.as_view({'get': 'list'})
-
-        request = factory.get(url)
-        force_authenticate(request, user=self.user)
-        response = view(request)
-        #print(vars(response))
-
-
-
+        self.assertTrue(self.user.username in json_response)
+        self.assertTrue(self.user.email in json_response)
+        self.assertTrue('count' in json_response)
