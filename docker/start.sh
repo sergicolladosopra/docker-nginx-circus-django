@@ -18,7 +18,8 @@ then
     nginx -c /code/config/nginx.conf
     circusd  /code/config/circus.ini
 else
-    python /opt/app/manage.py test
+    cd /opt/app/
+    python manage.py test
 fi
 
 
