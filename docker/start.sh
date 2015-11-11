@@ -13,13 +13,7 @@
 python /opt/app/manage.py collectstatic --noinput
 python /opt/app/manage.py migrate
 
-if [ -z "$TESTS" ]
-then
-    nginx -c /code/config/nginx.conf
-    circusd  /code/config/circus.ini
-else
-    cd /opt/app/
-    python manage.py test
-fi
+nginx -c /code/config/nginx.conf
+circusd  /code/config/circus.ini
 
 
