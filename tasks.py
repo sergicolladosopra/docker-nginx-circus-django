@@ -14,3 +14,11 @@ def runbash(image="djangorest"):
     command = "docker run -ti -v $PWD/app:/opt/app {env} --net=host {image} /bin/bash".format(image=image, env=env)
     print('exe: ',command)
     run(command)
+
+@task
+def runtests(image="djangorest"):
+    command = "docker run -ti -v $PWD/app:/opt/app --net=host {image} /code/docker/run_tests.sh ".format(image=image)
+    print('exe: ',command)
+    run(command)
+
+

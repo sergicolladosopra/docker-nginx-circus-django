@@ -2,10 +2,9 @@ FROM python:3.4
 MAINTAINER sergicolladosopra@gmail.com
 
 ENV PYTHONUNBUFFERED 1
-
+RUN apt-get -y autoremove 
 RUN apt-get update && apt-get install -y \
     nginx
-
 
 RUN mkdir /code
 WORKDIR /code
