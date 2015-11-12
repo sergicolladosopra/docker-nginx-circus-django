@@ -3,4 +3,3 @@ djangorestframework
 django-filter
 envtpl
 django-grappelli
-django-dynamic-fixture

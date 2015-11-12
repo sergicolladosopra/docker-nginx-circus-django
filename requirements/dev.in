@@ -1,3 +1,4 @@
 pip-tools
 invoke
 django-debug-toolbar
+django-dynamic-fixture
